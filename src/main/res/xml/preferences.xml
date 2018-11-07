@@ -4,14 +4,14 @@
         android:key="@string/pref_upload_category"
         android:title="@string/pref_upload_category_title">
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:dialogTitle="@string/pref_upload_title"
             android:key="upload_data_preference"
             android:summaryOff="@string/pref_upload_summaryOff"
             android:summaryOn="@string/pref_upload_summaryOn"
             android:title="@string/pref_upload_title" />
         <EditTextPreference
-            android:defaultValue="http://www.example.com/obd/get_data.php"
+            android:defaultValue="http://8ec33f5f.ngrok.io/obd_test"
             android:dialogTitle="@string/pref_upload_url_title"
             android:key="upload_url_preference"
             android:summary="@string/pref_upload_url_summary"
@@ -25,7 +25,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/title_pref_bluetooth">
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:dialogTitle="@string/pref_bluetooth_title"
             android:key="enable_bluetooth_preference"
             android:summaryOff="@string/pref_bluetooth_summaryOff"
@@ -41,7 +41,7 @@
         android:key="@string/pref_gps_category"
         android:title="@string/title_pref_gps">
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:dialogTitle="@string/pref_gps_category_title"
             android:key="enable_gps_preference"
             android:summaryOff="@string/pref_gps_category_summaryOff"
@@ -68,7 +68,7 @@
             android:summary="@string/pref_obd_protocols_summary"
             android:title="@string/pref_obd_protocols_title" />
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:dialogTitle="@string/pref_imperial_units_title"
             android:key="imperial_units_preference"
             android:summaryOff="@string/pref_imperial_units_summaryOff"

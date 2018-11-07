@@ -93,7 +93,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     private static final int TRIPS_LIST = 10;
     private static final int SAVE_TRIP_NOT_AVAILABLE = 11;
     private static final int REQUEST_ENABLE_BT = 1234;
-    private static boolean bluetoothDefaultIsEnable = false;
+    private static boolean bluetoothDefaultIsEnable = true;
 
     static {
         RoboGuice.setUseAnnotationDatabases(false);
@@ -327,6 +327,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         if (btAdapter != null)
             bluetoothDefaultIsEnable = btAdapter.isEnabled();
 
+
         // get Orientation sensor
         List<Sensor> sensors = sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
         if (sensors.size() > 0)
@@ -402,8 +403,10 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         gpsInit();
 
         if (!preRequisites) {
-            showDialog(BLUETOOTH_DISABLED);
+            //showDialog(BLUETOOTH_DISABLED);
+            //this is probably a good place to move to setup?
             btStatusTextView.setText(getString(R.string.status_bluetooth_disabled));
+            return;
         } else {
             btStatusTextView.setText(getString(R.string.status_bluetooth_ok));
         }
@@ -670,6 +673,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
             if (resultCode == Activity.RESULT_OK) {
                 btStatusTextView.setText(getString(R.string.status_bluetooth_connected));
             } else {
+                //here no bluetooth device found
                 Toast.makeText(this, R.string.text_bluetooth_disabled, Toast.LENGTH_LONG).show();
             }
         }
@@ -700,7 +704,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
 
         @Override
         protected Void doInBackground(ObdReading... readings) {
-            Log.d(TAG, "Uploading " + readings.length + " readings..");
+            Log.d(TAG, "Uploading " + readings.length + " readings to " + prefs.getString(ConfigActivity.UPLOAD_URL_KEY, ""));
             // instantiate reading service client
             final String endpoint = prefs.getString(ConfigActivity.UPLOAD_URL_KEY, "");
             RestAdapter restAdapter = new RestAdapter.Builder()

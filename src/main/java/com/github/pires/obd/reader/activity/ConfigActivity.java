@@ -17,6 +17,7 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.github.pires.obd.commands.ObdCommand;
@@ -32,6 +33,7 @@ import java.util.Set;
  */
 public class ConfigActivity extends PreferenceActivity implements OnPreferenceChangeListener {
 
+    private static final String TAG = ConfigActivity.class.getName();
     public static final String BLUETOOTH_LIST_KEY = "bluetooth_list_preference";
     public static final String UPLOAD_URL_KEY = "upload_url_preference";
     public static final String UPLOAD_DATA_KEY = "upload_data_preference";
@@ -216,6 +218,7 @@ public class ConfigActivity extends PreferenceActivity implements OnPreferenceCh
     /*
      * Available OBD commands
      *
+     * TODO This should be read from preferences database
      * TODO This should be read from preferences database
      */
         ArrayList<ObdCommand> cmds = ObdConfig.getCommands();

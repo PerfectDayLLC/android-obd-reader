@@ -1,9 +1,10 @@
 buildscript {
     repositories {
         mavenCentral()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:3.2.1'
     }
 }
 
@@ -18,14 +19,24 @@ repositories {
     mavenLocal()
     mavenCentral()
 }
-
+allprojects {
+    repositories {
+        google() // and here
+        jcenter()
+    }
+}
 android {
     compileSdkVersion 22
-    android.buildToolsVersion "23.0.1"
+    //android.buildToolsVersion "23.0.1"
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 21
         applicationId 'com.github.pires.obd.reader'
+        javaCompileOptions{
+            annotationProcessorOptions{
+                includeCompileClasspath = true
+            }
+        }
     }
 
     lintOptions {
@@ -41,9 +52,9 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.1.1'
-    compile 'com.github.pires:obd-java-api:1.0-RC16'
-    compile 'org.roboguice:roboguice:3.+'
-    provided 'org.roboguice:roboblender:3.+'
-    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    implementation 'com.android.support:appcompat-v7:22.1.1'
+    implementation 'com.github.pires:obd-java-api:1.0-RC16'
+    implementation 'org.roboguice:roboguice:3.+'
+    compileOnly 'org.roboguice:roboblender:3.+'
+    implementation 'com.squareup.retrofit:retrofit:1.9.0'
 }
