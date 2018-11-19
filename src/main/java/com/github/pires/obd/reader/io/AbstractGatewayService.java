@@ -9,6 +9,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.github.pires.obd.reader.activity.MainActivity;
 import com.google.inject.Inject;
@@ -60,7 +61,8 @@ public abstract class AbstractGatewayService extends RoboService {
         super.onDestroy();
         Log.d(TAG, "Destroying service...");
         notificationManager.cancel(NOTIFICATION_ID);
-        t.interrupt();
+        //t.interrupt();
+        Toast.makeText(this, "Service is destroyed", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "Service destroyed.");
     }
 

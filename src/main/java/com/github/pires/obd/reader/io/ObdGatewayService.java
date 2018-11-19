@@ -47,7 +47,7 @@ public class ObdGatewayService extends AbstractGatewayService {
     private BluetoothSocket sock = null;
 
     public void startService() throws IOException {
-        Log.d(TAG, "Starting service..");
+        Log.d(TAG, "Starting MSM OBD");
 
         // get the remote Bluetooth device
         final String remoteDevice = prefs.getString(ConfigActivity.BLUETOOTH_LIST_KEY, null);

@@ -11,7 +11,7 @@
             android:summaryOn="@string/pref_upload_summaryOn"
             android:title="@string/pref_upload_title" />
         <EditTextPreference
-            android:defaultValue="http://8ec33f5f.ngrok.io/obd_test"
+            android:defaultValue="@string/pref_default_upload_url"
             android:dialogTitle="@string/pref_upload_url_title"
             android:key="upload_url_preference"
             android:summary="@string/pref_upload_url_summary"

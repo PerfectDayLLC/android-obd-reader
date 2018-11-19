@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -42,6 +43,7 @@ import com.github.pires.obd.commands.SpeedCommand;
 import com.github.pires.obd.commands.engine.RPMCommand;
 import com.github.pires.obd.commands.engine.RuntimeCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
+import com.github.pires.obd.reader.BackgroundService.BackgroundService;
 import com.github.pires.obd.reader.R;
 import com.github.pires.obd.reader.config.ObdConfig;
 import com.github.pires.obd.reader.io.AbstractGatewayService;
@@ -337,35 +339,41 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
 
         // create a log instance for use by this application
         triplog = TripLog.getInstance(this.getApplicationContext());
-        
+        Log.i(TAG, "james: before");
+        //add setting of defaults on start
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, true);
+        Log.i(TAG, "james: set values to default");
         obdStatusTextView.setText(getString(R.string.status_obd_disconnected));
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "Entered onStart...");
+        Log.d(TAG, "james: Entered onStart...");
+        //todo start here!
+        startService(new Intent(this, BackgroundService .class));
     }
 
     @Override
     protected void onDestroy() {
+        Log.d(TAG, "james: destroy");
         super.onDestroy();
-
-        if (mLocService != null) {
-            mLocService.removeGpsStatusListener(this);
-            mLocService.removeUpdates(this);
-        }
-
-        releaseWakeLockIfHeld();
-        if (isServiceBound) {
-            doUnbindService();
-        }
-
-        endTrip();
-
-        final BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (btAdapter != null && btAdapter.isEnabled() && !bluetoothDefaultIsEnable)
-            btAdapter.disable();
+//
+//        if (mLocService != null) {
+//            mLocService.removeGpsStatusListener(this);
+//            mLocService.removeUpdates(this);
+//        }
+//
+//        releaseWakeLockIfHeld();
+//        if (isServiceBound) {
+//            doUnbindService();
+//        }
+//
+//        endTrip();
+//
+//        final BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
+//        if (btAdapter != null && btAdapter.isEnabled() && !bluetoothDefaultIsEnable)
+//            btAdapter.disable();
     }
 
     @Override
@@ -450,9 +458,14 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         startActivity(new Intent(this, TroubleCodesActivity.class));
     }
 
+    public void serviceStartLiveData() {
+        Toast.makeText(this, "Live service started", Toast.LENGTH_SHORT).show();
+        startLiveData();
+    }
+
     private void startLiveData() {
         Log.d(TAG, "Starting live data..");
-
+        Toast.makeText(this, "Service started by user.", Toast.LENGTH_LONG).show();
         tl.removeAllViews(); //start fresh
         doBindService();
 
@@ -721,9 +734,13 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
                 }
 
             }
+
             Log.d(TAG, "Done");
             return null;
         }
 
     }
+
+
+
 }
