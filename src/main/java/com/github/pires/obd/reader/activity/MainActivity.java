@@ -339,24 +339,20 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
 
         // create a log instance for use by this application
         triplog = TripLog.getInstance(this.getApplicationContext());
-        Log.i(TAG, "james: before");
         //add setting of defaults on start
         PreferenceManager.setDefaultValues(this, R.xml.preferences, true);
-        Log.i(TAG, "james: set values to default");
         obdStatusTextView.setText(getString(R.string.status_obd_disconnected));
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "james: Entered onStart...");
         //todo start here!
         startService(new Intent(this, BackgroundService .class));
     }
 
     @Override
     protected void onDestroy() {
-        Log.d(TAG, "james: destroy");
         super.onDestroy();
 //
 //        if (mLocService != null) {

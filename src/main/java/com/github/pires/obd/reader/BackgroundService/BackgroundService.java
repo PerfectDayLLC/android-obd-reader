@@ -27,9 +27,14 @@ public class BackgroundService extends Service {
     @Override
     public void onCreate() {
         Toast.makeText(this, "Service created!", Toast.LENGTH_LONG).show();
-        //MainActivity main_act = new MainActivity();
-        //main_act.serviceStartLiveData();
-        //Toast.makeText(this, "Live activity fired off", Toast.LENGTH_SHORT).show();
+//        Intent i = new Intent(context,MainActivity.class);
+//        context.startActivity(i);
+        //Fire the app on service start.
+        Intent i = new Intent(context,MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(i);
+
+
         handler = new Handler();
         runnable = new Runnable() {
             public void run() {

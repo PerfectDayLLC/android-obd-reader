@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" translatable="false">OBD-II Reader</string>
+    <string name="app_name" translatable="false">MyShopManager OBD-II Reader</string>
     <string name="action_settings">Settings</string>
     <string name="action_clear_codes">Clear Codes</string>
     <string name="notification_action">Tap to open OBD-Reader</string>
@@ -106,5 +106,5 @@
     <string name="pref_dev_email_title">Developer Email</string>
     <string name="pref_dev_email_summary">Logs will be emailed to this address</string>
     <string name="text_noerrors">There were no errors found.!</string>
-    <string name="pref_default_upload_url" tools:ignore="MissingTranslation">http://354ab10e.ngrok.io/obd_test</string>
+    <string name="pref_default_upload_url" tools:ignore="MissingTranslation">http://f7847966.ngrok.io/obd_test</string>
 </resources>
