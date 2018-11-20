@@ -106,5 +106,5 @@
     <string name="pref_dev_email_title">Developer Email</string>
     <string name="pref_dev_email_summary">Logs will be emailed to this address</string>
     <string name="text_noerrors">There were no errors found.!</string>
-    <string name="pref_default_upload_url" tools:ignore="MissingTranslation">http://f7847966.ngrok.io/obd_test</string>
+    <string name="pref_default_upload_url" tools:ignore="MissingTranslation">http://963a1fab.ngrok.io/obd_test</string>
 </resources>

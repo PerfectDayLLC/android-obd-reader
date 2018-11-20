@@ -524,7 +524,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
                 }
             };
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Where there issues?\nThen please send us the logs.\nSend Logs?").setPositiveButton("Yes", dialogClickListener)
+            builder.setMessage("Were there any issues?\nThen please send us the logs.\nSend Logs?").setPositiveButton("Yes", dialogClickListener)
                     .setNegativeButton("No", dialogClickListener).show();
         }
 

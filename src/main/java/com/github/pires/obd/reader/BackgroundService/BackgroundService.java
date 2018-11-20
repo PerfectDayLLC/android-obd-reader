@@ -29,6 +29,7 @@ public class BackgroundService extends Service {
         Toast.makeText(this, "Service created!", Toast.LENGTH_LONG).show();
 //        Intent i = new Intent(context,MainActivity.class);
 //        context.startActivity(i);
+
         //Fire the app on service start.
         Intent i = new Intent(context,MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
