@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
@@ -25,10 +27,12 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
@@ -43,7 +47,8 @@ import com.github.pires.obd.commands.SpeedCommand;
 import com.github.pires.obd.commands.engine.RPMCommand;
 import com.github.pires.obd.commands.engine.RuntimeCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
-import com.github.pires.obd.reader.BackgroundService.BackgroundService;
+import com.github.pires.obd.reader.MSMBackgroundService;
+import com.github.pires.obd.reader.MSMIntentService;
 import com.github.pires.obd.reader.R;
 import com.github.pires.obd.reader.config.ObdConfig;
 import com.github.pires.obd.reader.io.AbstractGatewayService;
@@ -348,28 +353,45 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     protected void onStart() {
         super.onStart();
         //todo start here!
-        startService(new Intent(this, BackgroundService .class));
+        startService(new Intent(this, MSMBackgroundService.class));
+
+    }
+
+    public void startBackgroundService(View view) {
+        Intent intent = new Intent(this, MSMBackgroundService.class);
+        startService(intent);
+    }
+
+    public void stopBackgroundService(View view) {
+        Intent intent = new Intent(this, MSMBackgroundService.class);
+        stopService(intent);
+    }
+
+    public void startIntentService(View view) {
+        Intent intent = new Intent(this, MSMIntentService.class);
+        startService(intent);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//
-//        if (mLocService != null) {
-//            mLocService.removeGpsStatusListener(this);
-//            mLocService.removeUpdates(this);
-//        }
-//
-//        releaseWakeLockIfHeld();
-//        if (isServiceBound) {
-//            doUnbindService();
-//        }
-//
-//        endTrip();
-//
-//        final BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
-//        if (btAdapter != null && btAdapter.isEnabled() && !bluetoothDefaultIsEnable)
-//            btAdapter.disable();
+
+        if (mLocService != null) {
+           // mLocService.removeGpsStatusListener(this);
+            //mLocService.removeUpdates(this);
+        }
+
+        releaseWakeLockIfHeld();
+        if (isServiceBound) {
+            //doUnbindService();
+        }
+
+        //endTrip();
+
+        final BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (btAdapter != null && btAdapter.isEnabled() && !bluetoothDefaultIsEnable) {
+            //btAdapter.disable();
+        }
     }
 
     @Override
@@ -377,6 +399,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         super.onPause();
         Log.d(TAG, "Pausing..");
         releaseWakeLockIfHeld();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(msmLocalBroadcastReciever);
     }
 
     /**
@@ -392,8 +415,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         Log.d(TAG, "Resuming..");
         sensorManager.registerListener(orientListener, orientSensor,
                 SensorManager.SENSOR_DELAY_UI);
-        wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,
-                "ObdReader");
+        wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,"MSMObdReader:");
 
         // get Bluetooth device
         final BluetoothAdapter btAdapter = BluetoothAdapter
@@ -414,7 +436,18 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         } else {
             btStatusTextView.setText(getString(R.string.status_bluetooth_ok));
         }
+
+        IntentFilter intentFilter = new IntentFilter("msm.obd.broadcast");
+        LocalBroadcastManager.getInstance(this).registerReceiver(msmLocalBroadcastReciever, intentFilter);
     }
+
+    private BroadcastReceiver msmLocalBroadcastReciever = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //int results = intent.getIntExtra("results", -1);
+            Log.i(TAG, "BroadcastReceviveer thread " + Thread.currentThread().getName());
+        }
+    };
 
     private void updateConfig() {
         startActivity(new Intent(this, ConfigActivity.class));

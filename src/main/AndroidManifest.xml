@@ -57,7 +57,11 @@
             android:exported="false"
             android:launchMode="singleInstance" />
         <service
-            android:name=".BackgroundService.BackgroundService"
+            android:name=".MSMBackgroundService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".MSMIntentService"
             android:enabled="true"
             android:exported="true" />
     </application>
