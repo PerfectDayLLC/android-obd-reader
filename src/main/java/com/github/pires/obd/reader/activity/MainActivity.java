@@ -102,6 +102,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     private static final int REQUEST_ENABLE_BT = 1234;
     private static boolean bluetoothDefaultIsEnable = true;
 
+
     static {
         RoboGuice.setUseAnnotationDatabases(false);
     }
@@ -328,6 +329,8 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
 
         final BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -352,9 +355,19 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     @Override
     protected void onStart() {
         super.onStart();
-        //todo start here!
-        startService(new Intent(this, MSMBackgroundService.class));
+        //disabling our background service
+        //startService(new Intent(this, MSMBackgroundService.class));
 
+    }
+
+    public void startLiveDataFromHome(View view) {
+        Log.i(TAG, "MSM: User started live data");
+        startLiveData();
+    }
+
+    public void stopLiveDataFromHome(View view) {
+        Log.i(TAG, "MSM: User stopped live data");
+        stopLiveData();
     }
 
     public void startBackgroundService(View view) {
@@ -494,7 +507,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
 
     private void startLiveData() {
         Log.d(TAG, "Starting live data..");
-        Toast.makeText(this, "Service started by user.", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Service started by user.", Toast.LENGTH_LONG).show();
         tl.removeAllViews(); //start fresh
         doBindService();
 

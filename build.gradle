@@ -32,8 +32,8 @@ android {
         minSdkVersion 14
         targetSdkVersion 21
         applicationId 'com.github.pires.obd.reader'
-        javaCompileOptions{
-            annotationProcessorOptions{
+        javaCompileOptions {
+            annotationProcessorOptions {
                 includeCompileClasspath = true
             }
         }
@@ -55,6 +55,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:22.1.1'
     implementation 'com.github.pires:obd-java-api:1.0-RC16'
     implementation 'org.roboguice:roboguice:3.+'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     compileOnly 'org.roboguice:roboblender:3.+'
     implementation 'com.squareup.retrofit:retrofit:1.9.0'
 }
