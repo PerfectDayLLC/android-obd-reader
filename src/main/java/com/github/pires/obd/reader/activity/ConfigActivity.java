@@ -42,22 +42,22 @@ public class ConfigActivity extends PreferenceActivity implements OnPreferenceCh
     public static final String BLUETOOTH_LIST_KEY = "bluetooth_list_preference";
     public static final String ENABLE_BT_KEY = "true";//"enable_bluetooth_preference";
     //GPS
-    public static final String ENABLE_GPS_KEY = "enable_gps_preference";
+    public static final String ENABLE_GPS_KEY = "true";//"enable_gps_preference";
     public static final String GPS_UPDATE_PERIOD_KEY = "1";//"gps_update_period_preference";
     public static final String GPS_DISTANCE_PERIOD_KEY = "5";//"gps_distance_period_preference";
     //OBD prefs
-    public static final String OBD_UPDATE_PERIOD_KEY = "obd_update_period_preference";
+    public static final String OBD_UPDATE_PERIOD_KEY = ".01";//"obd_update_period_preference";
     public static final String COMMANDS_SCREEN_KEY = "obd_commands_screen";
-    public static final String PROTOCOLS_LIST_KEY = "obd_protocols_preference";
+    public static final String PROTOCOLS_LIST_KEY = "AUTO";//"obd_protocols_preference";
     public static final String IMPERIAL_UNITS_KEY = "true";//"imperial_units_preference";
-    public static final String MAX_FUEL_ECON_KEY = "max_fuel_econ_preference";
-    public static final String VOLUMETRIC_EFFICIENCY_KEY = "volumetric_efficiency_preference";
-    public static final String ENGINE_DISPLACEMENT_KEY = "engine_displacement_preference";
+    public static final String MAX_FUEL_ECON_KEY = "70";//"max_fuel_econ_preference";
+    public static final String VOLUMETRIC_EFFICIENCY_KEY = ".85";//"volumetric_efficiency_preference";
+    public static final String ENGINE_DISPLACEMENT_KEY = "1.6";//"engine_displacement_preference";
     public static final String CONFIG_READER_KEY = "atsp0\natz";//"reader_config_preference";
     public static final String DEV_EMAIL_KEY = "support@myshopmanager.com";
     //Full logging
-    public static final String ENABLE_FULL_LOGGING_KEY = "enable_full_logging";
-    public static final String DIRECTORY_FULL_LOGGING_KEY = "dirname_full_logging";
+    public static final String ENABLE_FULL_LOGGING_KEY = "false";//"enable_full_logging";
+    public static final String DIRECTORY_FULL_LOGGING_KEY = "MSM_OBD_Logging";//"dirname_full_logging";
 
     /**
      * @param prefs
@@ -65,8 +65,8 @@ public class ConfigActivity extends PreferenceActivity implements OnPreferenceCh
      */
     public static int getObdUpdatePeriod(SharedPreferences prefs) {
         String periodString = prefs.
-                getString(ConfigActivity.OBD_UPDATE_PERIOD_KEY, "4"); // 4 as in seconds
-        int period = 4000; // by default 4000ms
+                getString(ConfigActivity.OBD_UPDATE_PERIOD_KEY, "0.01"); // 4 as in seconds
+        int period = 1000; // by default 1000ms
 
         try {
             period = (int) (Double.parseDouble(periodString) * 1000);
@@ -74,7 +74,7 @@ public class ConfigActivity extends PreferenceActivity implements OnPreferenceCh
         }
 
         if (period <= 0) {
-            period = 4000;
+            period = 1000;
         }
 
         return period;
@@ -201,25 +201,25 @@ public class ConfigActivity extends PreferenceActivity implements OnPreferenceCh
     /*
      * Read preferences resources available at res/xml/preferences.xml
      */
+    Log.i(TAG, "msm: heyo");
         addPreferencesFromResource(R.xml.preferences);
-
+        Log.i(TAG, "msm: heyo2");
         checkGps();
 
         ArrayList<CharSequence> pairedDeviceStrings = new ArrayList<>();
         ArrayList<CharSequence> vals = new ArrayList<>();
         ListPreference listBtDevices = (ListPreference) getPreferenceScreen()
                 .findPreference(BLUETOOTH_LIST_KEY);
-        ArrayList<CharSequence> protocolStrings = new ArrayList<>();
-        ListPreference listProtocols = (ListPreference) getPreferenceScreen()
-                .findPreference(PROTOCOLS_LIST_KEY);
-        String[] prefKeys = new String[]{ENGINE_DISPLACEMENT_KEY,
-                VOLUMETRIC_EFFICIENCY_KEY, OBD_UPDATE_PERIOD_KEY, MAX_FUEL_ECON_KEY};
-        for (String prefKey : prefKeys) {
-            EditTextPreference txtPref = (EditTextPreference) getPreferenceScreen()
-                    .findPreference(prefKey);
-            txtPref.setOnPreferenceChangeListener(this);
-        }
-
+       // ArrayList<CharSequence> protocolStrings = new ArrayList<>();
+       // ListPreference listProtocols = (ListPreference) getPreferenceScreen()
+        //        .findPreference(PROTOCOLS_LIST_KEY);
+       // String[] prefKeys = new String[]{};
+        //for (String prefKey : prefKeys) {
+        //    EditTextPreference txtPref = (EditTextPreference) getPreferenceScreen()
+        //            .findPreference(prefKey);
+        //    txtPref.setOnPreferenceChangeListener(this);
+        //}
+        Log.i(TAG, "msm: heyo3");
     /*
      * Available OBD commands
      *
@@ -241,16 +241,17 @@ public class ConfigActivity extends PreferenceActivity implements OnPreferenceCh
      * Available OBD protocols
      *
      */
-        for (ObdProtocols protocol : ObdProtocols.values()) {
-            protocolStrings.add(protocol.name());
-        }
-        listProtocols.setEntries(protocolStrings.toArray(new CharSequence[0]));
-        listProtocols.setEntryValues(protocolStrings.toArray(new CharSequence[0]));
+//        for (ObdProtocols protocol : ObdProtocols.values()) {
+//            protocolStrings.add(protocol.name());
+//        }
+//        listProtocols.setEntries(protocolStrings.toArray(new CharSequence[0]));
+//        listProtocols.setEntryValues(protocolStrings.toArray(new CharSequence[0]));
 
     /*
      * Let's use this device Bluetooth adapter to select which paired OBD-II
      * compliant device we'll use.
      */
+        Log.i(TAG, "msm: heyo4");
         final BluetoothAdapter mBtAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBtAdapter == null) {
             listBtDevices
