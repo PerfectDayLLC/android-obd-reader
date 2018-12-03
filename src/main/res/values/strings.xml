@@ -113,6 +113,8 @@
     <string name="menu_stop">Stop</string>
     <string name="menu_trips_list">Trip List</string>
     <string name="pref_vehicle_info_title">Vehicle Info</string>
+    <string name="menu_start_logging">Start Logging</string>
+    <string name="menu_stop_logging">Stop Logging</string>
 
     <!--main config settings-->
     <!--<string name="upload_data_preference">true</string>-->

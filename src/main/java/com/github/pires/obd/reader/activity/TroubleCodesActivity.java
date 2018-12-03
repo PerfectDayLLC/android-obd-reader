@@ -143,7 +143,7 @@ public class TroubleCodesActivity extends Activity {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.trouble_codes, menu);
-        return super.onCreateOptionsMenu(menu);
+        return false;
     }
 
     @Override

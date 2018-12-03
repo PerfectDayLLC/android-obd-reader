@@ -38,14 +38,17 @@
         </activity>
         <activity
             android:name=".activity.ConfigActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleInstance" />
         <activity
             android:name=".activity.TroubleCodesActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:label="@string/title_activity_trouble_codes"
             android:launchMode="singleInstance" />
         <activity
             android:name=".activity.TripListActivity"
+            android:parentActivityName=".activity.MainActivity"
             android:label="@string/title_activity_trips_list"
             android:launchMode="singleInstance" />
 

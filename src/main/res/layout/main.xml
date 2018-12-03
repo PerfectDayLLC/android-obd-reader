@@ -6,6 +6,65 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/activity_horizontal_margin"
     android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/start_live_data_home_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_weight="0.5"
+            android:text="@string/menu_start_logging"
+            android:onClick="startLiveDataFromHome"
+            />
+
+        <Button
+            android:id="@+id/stop_live_data_home_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/menu_stop_logging"
+            android:onClick="stopLiveDataFromHome"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/home_settings_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="false"
+            android:layout_weight="0.5"
+            android:text="@string/action_settings"
+            android:onClick="openSettingsFromHome"
+            />
+
+        <Button
+            android:id="@+id/home_dtc_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/menu_get_dtc"
+            android:onClick="getTroubleCodesFromHome"
+            />
+        <Button
+            android:id="@+id/home_trip_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/menu_trips_list"
+            android:onClick="openTripsList"
+            />
+    </LinearLayout>
 
     <TableRow
         android:layout_width="fill_parent"

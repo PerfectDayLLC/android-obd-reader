@@ -35,8 +35,10 @@ public class TripListActivity
     /// the currently selected row from the list of records
     private int selectedRow;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trips_list);
 
