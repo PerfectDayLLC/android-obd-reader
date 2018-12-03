@@ -1,36 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
-        android:key="@string/pref_upload_category"
-        android:title="@string/pref_upload_category_title">
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:dialogTitle="@string/pref_upload_title"
-            android:key="upload_data_preference"
-            android:summaryOff="@string/pref_upload_summaryOff"
-            android:summaryOn="@string/pref_upload_summaryOn"
-            android:title="@string/pref_upload_title" />
-        <EditTextPreference
-            android:defaultValue="@string/pref_default_upload_url"
-            android:dialogTitle="@string/pref_upload_url_title"
-            android:key="upload_url_preference"
-            android:summary="@string/pref_upload_url_summary"
-            android:title="@string/pref_upload_url_title" />
-        <EditTextPreference
-            android:defaultValue=""
-            android:dialogTitle="@string/pref_vehicle_id_title"
-            android:key="vehicle_id_preference"
-            android:summary="@string/pref_vehicle_id_summary"
-            android:title="@string/pref_vehicle_id_title" />
-    </PreferenceCategory>
     <PreferenceCategory android:title="@string/title_pref_bluetooth">
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:dialogTitle="@string/pref_bluetooth_title"
-            android:key="enable_bluetooth_preference"
-            android:summaryOff="@string/pref_bluetooth_summaryOff"
-            android:summaryOn="@string/pref_bluetooth_summaryOn"
-            android:title="@string/pref_bluetooth_title" />
+        <!--<CheckBoxPreference-->
+            <!--android:defaultValue="true"-->
+            <!--android:dialogTitle="@string/pref_bluetooth_title"-->
+            <!--android:key="enable_bluetooth_preference"-->
+            <!--android:summaryOff="@string/pref_bluetooth_summaryOff"-->
+            <!--android:summaryOn="@string/pref_bluetooth_summaryOn"-->
+            <!--android:title="@string/pref_bluetooth_title" />-->
         <ListPreference
             android:dialogTitle="@string/pref_bluetooth_list_devices_title"
             android:key="bluetooth_list_preference"
@@ -47,18 +24,18 @@
             android:summaryOff="@string/pref_gps_category_summaryOff"
             android:summaryOn="@string/pref_gps_category_summaryOn"
             android:title="@string/pref_gps_category_title" />
-        <EditTextPreference
-            android:defaultValue="1"
-            android:dialogTitle="@string/pref_gps_update_period_title"
-            android:key="gps_update_period_preference"
-            android:summary="@string/pref_gps_update_period_summary"
-            android:title="@string/pref_gps_update_period_title" />
-        <EditTextPreference
-            android:defaultValue="5"
-            android:dialogTitle="@string/pref_gps_distance_period_title"
-            android:key="gps_distance_period_preference"
-            android:summary="@string/pref_gps_distance_period_summary"
-            android:title="@string/pref_gps_distance_period_title" />
+        <!--<EditTextPreference-->
+            <!--android:defaultValue="1"-->
+            <!--android:dialogTitle="@string/pref_gps_update_period_title"-->
+            <!--android:key="gps_update_period_preference"-->
+            <!--android:summary="@string/pref_gps_update_period_summary"-->
+            <!--android:title="@string/pref_gps_update_period_title" />-->
+        <!--<EditTextPreference-->
+            <!--android:defaultValue="5"-->
+            <!--android:dialogTitle="@string/pref_gps_distance_period_title"-->
+            <!--android:key="gps_distance_period_preference"-->
+            <!--android:summary="@string/pref_gps_distance_period_summary"-->
+            <!--android:title="@string/pref_gps_distance_period_title" />-->
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/title_pref_obd">
         <ListPreference
@@ -67,13 +44,13 @@
             android:key="obd_protocols_preference"
             android:summary="@string/pref_obd_protocols_summary"
             android:title="@string/pref_obd_protocols_title" />
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:dialogTitle="@string/pref_imperial_units_title"
-            android:key="imperial_units_preference"
-            android:summaryOff="@string/pref_imperial_units_summaryOff"
-            android:summaryOn="@string/pref_imperial_units_summaryOn"
-            android:title="@string/pref_imperial_units_title" />
+        <!--<CheckBoxPreference-->
+            <!--android:defaultValue="true"-->
+            <!--android:dialogTitle="@string/pref_imperial_units_title"-->
+            <!--android:key="imperial_units_preference"-->
+            <!--android:summaryOff="@string/pref_imperial_units_summaryOff"-->
+            <!--android:summaryOn="@string/pref_imperial_units_summaryOn"-->
+            <!--android:title="@string/pref_imperial_units_title" />-->
         <EditTextPreference
             android:defaultValue="4"
             android:dialogTitle="@string/pref_obd_update_period_title"
@@ -98,18 +75,18 @@
             android:key="engine_displacement_preference"
             android:summary="@string/pref_engine_displacement_summary"
             android:title="@string/pref_engine_displacement_title" />
-        <EditTextPreference
-            android:defaultValue="atsp0\natz"
-            android:dialogTitle="@string/pref_reader_config_title"
-            android:key="reader_config_preference"
-            android:summary="@string/pref_reader_config_summary"
-            android:title="@string/pref_reader_config_title" />
-        <EditTextPreference
-            android:defaultValue=""
-            android:dialogTitle="@string/pref_dev_email_title"
-            android:key="dev_email"
-            android:summary="@string/pref_dev_email_summary"
-            android:title="@string/pref_dev_email_title"/>
+        <!--<EditTextPreference-->
+            <!--android:defaultValue="atsp0\natz"-->
+            <!--android:dialogTitle="@string/pref_reader_config_title"-->
+            <!--android:key="reader_config_preference"-->
+            <!--android:summary="@string/pref_reader_config_summary"-->
+            <!--android:title="@string/pref_reader_config_title" />-->
+        <!--<EditTextPreference-->
+            <!--android:defaultValue=""-->
+            <!--android:dialogTitle="@string/pref_dev_email_title"-->
+            <!--android:key="dev_email"-->
+            <!--android:summary="@string/pref_dev_email_summary"-->
+            <!--android:title="@string/pref_dev_email_title"/>-->
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/title_pref_commands">
         <PreferenceScreen
@@ -123,11 +100,34 @@
             android:key="enable_full_logging"
             android:summary="@string/pref_enable_full_logging_summary"
             android:title="@string/pref_enable_full_logging_title"/>
+        <!--<EditTextPreference-->
+            <!--android:defaultValue="@string/default_dirname_full_logging"-->
+            <!--android:dialogTitle="@string/pref_dirname_dialogTitle"-->
+            <!--android:key="dirname_full_logging"-->
+            <!--android:summary="@string/pref_dirname_summary"-->
+            <!--android:title="@string/pref_dirname_title" />-->
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="@string/pref_upload_category"
+        android:title="@string/pref_vehicle_info_title">
+        <!--<CheckBoxPreference-->
+        <!--android:defaultValue="true"-->
+        <!--android:dialogTitle="@string/pref_upload_title"-->
+        <!--android:key="upload_data_preference"-->
+        <!--android:summaryOff="@string/pref_upload_summaryOff"-->
+        <!--android:summaryOn="@string/pref_upload_summaryOn"-->
+        <!--android:title="@string/pref_upload_title" />-->
+        <!--<EditTextPreference-->
+        <!--android:defaultValue="@string/pref_default_upload_url"-->
+        <!--android:dialogTitle="@string/pref_upload_url_title"-->
+        <!--android:key="upload_url_preference"-->
+        <!--android:summary="@string/pref_upload_url_summary"-->
+        <!--android:title="@string/pref_upload_url_title" />-->
         <EditTextPreference
-            android:defaultValue="@string/default_dirname_full_logging"
-            android:dialogTitle="@string/pref_dirname_dialogTitle"
-            android:key="dirname_full_logging"
-            android:summary="@string/pref_dirname_summary"
-            android:title="@string/pref_dirname_title" />
+            android:defaultValue=" "
+            android:dialogTitle="@string/pref_vehicle_id_title"
+            android:key="vehicle_id_preference"
+            android:summary="@string/pref_vehicle_id_summary"
+            android:title="@string/pref_vehicle_id_title" />
     </PreferenceCategory>
 </PreferenceScreen>

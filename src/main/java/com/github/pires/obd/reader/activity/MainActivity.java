@@ -370,19 +370,31 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         stopLiveData();
     }
 
+    public void getTroubleCodesFromHome(View view) {
+        Log.i(TAG, "MSM: Getting trouble codes");
+        getTroubleCodes();
+    }
+
+    public void openSettingsFromHome(View view) {
+        Log.i(TAG, "MSM: Opening settings");
+        updateConfig();
+    }
+
+    public void openTripsList(View view) {
+        Log.i(TAG, "MSM: Opening trips list");
+        startActivity(new Intent(this, TripListActivity.class));
+    }
+
     public void startBackgroundService(View view) {
-        Intent intent = new Intent(this, MSMBackgroundService.class);
-        startService(intent);
+        startService(new Intent(this, MSMBackgroundService.class));
     }
 
     public void stopBackgroundService(View view) {
-        Intent intent = new Intent(this, MSMBackgroundService.class);
-        stopService(intent);
+        stopService(new Intent(this, MSMBackgroundService.class));
     }
 
     public void startIntentService(View view) {
-        Intent intent = new Intent(this, MSMIntentService.class);
-        startService(intent);
+        startService(new Intent(this, MSMIntentService.class));
     }
 
     @Override
@@ -472,7 +484,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         menu.add(0, GET_DTC, 0, getString(R.string.menu_get_dtc));
         menu.add(0, TRIPS_LIST, 0, getString(R.string.menu_trip_list));
         menu.add(0, SETTINGS, 0, getString(R.string.menu_settings));
-        return true;
+        return false;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -588,6 +600,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
 
     protected Dialog onCreateDialog(int id) {
         AlertDialog.Builder build = new AlertDialog.Builder(this);
+        build.setCancelable(true);
         switch (id) {
             case NO_BLUETOOTH_ID:
                 build.setMessage(getString(R.string.text_no_bluetooth_id));
@@ -597,15 +610,19 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
                 return build.create();
             case NO_ORIENTATION_SENSOR:
+                //Toast.makeText(service, getString(R.string.text_no_orientation_sensor), Toast.LENGTH_SHORT).show();
                 build.setMessage(getString(R.string.text_no_orientation_sensor));
                 return build.create();
             case NO_GPS_SUPPORT:
+                //Toast.makeText(service, getString(R.string.text_no_gps_support), Toast.LENGTH_SHORT).show();
                 build.setMessage(getString(R.string.text_no_gps_support));
                 return build.create();
             case SAVE_TRIP_NOT_AVAILABLE:
                 build.setMessage(getString(R.string.text_save_trip_not_available));
+                //Toast.makeText(service, getString(R.string.text_save_trip_not_available), Toast.LENGTH_SHORT).show();
                 return build.create();
         }
+
         return null;
     }
 
