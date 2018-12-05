@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -36,7 +37,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -226,9 +229,12 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
                 service.startService();
                 if (preRequisites)
                     btStatusTextView.setText(getString(R.string.status_bluetooth_connected));
+                    btStatusTextView.setTextColor(getResources().getColor(R.color.success));
+
             } catch (IOException ioe) {
                 Log.e(TAG, "Failure Starting live data");
                 btStatusTextView.setText(getString(R.string.status_bluetooth_error_connecting));
+                btStatusTextView.setTextColor(getResources().getColor(R.color.error));
                 doUnbindService();
             }
         }
@@ -282,6 +288,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
             cmdResult = job.getCommand().getFormattedResult();
             if(isServiceBound)
                 obdStatusTextView.setText(getString(R.string.status_obd_data));
+                obdStatusTextView.setTextColor(getResources().getColor(R.color.success));
         }
 
         if (vv.findViewWithTag(cmdID) != null) {
@@ -300,11 +307,13 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
                 mLocService.addGpsStatusListener(this);
                 if (mLocService.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                     gpsStatusTextView.setText(getString(R.string.status_gps_ready));
+                    gpsStatusTextView.setTextColor(getResources().getColor(R.color.success));
                     return true;
                 }
             }
         }
         gpsStatusTextView.setText(getString(R.string.status_gps_no_support));
+        gpsStatusTextView.setTextColor(getResources().getColor(R.color.error));
         showDialog(NO_GPS_SUPPORT);
         Log.e(TAG, "Unable to get GPS PROVIDER");
         // todo disable gps controls into Preferences
@@ -350,6 +359,8 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         //add setting of defaults on start
         PreferenceManager.setDefaultValues(this, R.xml.preferences, true);
         obdStatusTextView.setText(getString(R.string.status_obd_disconnected));
+        obdStatusTextView.setTextColor(getResources().getColor(R.color.error));
+
     }
 
     @Override
@@ -457,9 +468,11 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
             //showDialog(BLUETOOTH_DISABLED);
             //this is probably a good place to move to setup?
             btStatusTextView.setText(getString(R.string.status_bluetooth_disabled));
+            btStatusTextView.setTextColor(getResources().getColor(R.color.error));
             return;
         } else {
             btStatusTextView.setText(getString(R.string.status_bluetooth_ok));
+            btStatusTextView.setTextColor(getResources().getColor(R.color.success));
         }
 
         IntentFilter intentFilter = new IntentFilter("msm.obd.broadcast");
@@ -534,6 +547,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
             gpsStart();
         else
             gpsStatusTextView.setText(getString(R.string.status_gps_not_used));
+            gpsStatusTextView.setTextColor(getResources().getColor(R.color.error));
 
         // screen won't turn off until wakeLock.release()
         wakeLock.acquire();
@@ -685,10 +699,12 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
             Log.d(TAG, "Binding OBD service..");
             if (preRequisites) {
                 btStatusTextView.setText(getString(R.string.status_bluetooth_connecting));
+                btStatusTextView.setTextColor(getResources().getColor(R.color.warning));
                 Intent serviceIntent = new Intent(this, ObdGatewayService.class);
                 bindService(serviceIntent, serviceConn, Context.BIND_AUTO_CREATE);
             } else {
                 btStatusTextView.setText(getString(R.string.status_bluetooth_disabled));
+                btStatusTextView.setTextColor(getResources().getColor(R.color.error));
                 Intent serviceIntent = new Intent(this, MockObdGatewayService.class);
                 bindService(serviceIntent, serviceConn, Context.BIND_AUTO_CREATE);
             }
@@ -701,11 +717,13 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
                 service.stopService();
                 if (preRequisites)
                     btStatusTextView.setText(getString(R.string.status_bluetooth_ok));
+                    btStatusTextView.setTextColor(getResources().getColor(R.color.success));
             }
             Log.d(TAG, "Unbinding OBD service..");
             unbindService(serviceConn);
             isServiceBound = false;
             obdStatusTextView.setText(getString(R.string.status_obd_disconnected));
+            obdStatusTextView.setTextColor(getResources().getColor(R.color.error));
         }
     }
 
@@ -727,12 +745,15 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         switch (event) {
             case GpsStatus.GPS_EVENT_STARTED:
                 gpsStatusTextView.setText(getString(R.string.status_gps_started));
+                gpsStatusTextView.setTextColor(getResources().getColor(R.color.success));
                 break;
             case GpsStatus.GPS_EVENT_STOPPED:
                 gpsStatusTextView.setText(getString(R.string.status_gps_stopped));
+                gpsStatusTextView.setTextColor(getResources().getColor(R.color.error));
                 break;
             case GpsStatus.GPS_EVENT_FIRST_FIX:
                 gpsStatusTextView.setText(getString(R.string.status_gps_fix));
+                gpsStatusTextView.setTextColor(getResources().getColor(R.color.warning));
                 break;
             case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
                 break;
@@ -744,6 +765,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         if (requestCode == REQUEST_ENABLE_BT) {
             if (resultCode == Activity.RESULT_OK) {
                 btStatusTextView.setText(getString(R.string.status_bluetooth_connected));
+                btStatusTextView.setTextColor(getResources().getColor(R.color.success));
             } else {
                 //here no bluetooth device found
                 Toast.makeText(this, R.string.text_bluetooth_disabled, Toast.LENGTH_LONG).show();
