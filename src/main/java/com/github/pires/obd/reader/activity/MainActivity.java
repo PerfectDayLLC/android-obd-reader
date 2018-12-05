@@ -161,6 +161,8 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     private LinearLayout vv;
     @InjectView(R.id.data_table)
     private TableLayout tl;
+    @InjectView(R.id.dlm_tv1)
+    private TextView tv;
     @Inject
     private SensorManager sensorManager;
     @Inject
@@ -368,8 +370,28 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         super.onStart();
         //disabling our background service
         //startService(new Intent(this, MSMBackgroundService.class));
-
+        ScrollView scroll;
+        Button button;
+        LinearLayout ll;
+        TableLayout table_layout;
+        scroll = (ScrollView) findViewById(R.id.data_scroll);
+        button = (Button) findViewById(R.id.view_detailed_logging);
+        ll = (LinearLayout) findViewById(R.id.data_layout_main);
+        table_layout = (TableLayout) findViewById(R.id.data_table);
+        if (scroll.getVisibility() == View.VISIBLE) {
+            scroll.setVisibility(View.GONE);
+            table_layout.setVisibility(View.GONE);
+            ll.setVisibility(View.VISIBLE);
+            button.setText(getString(R.string.view_more_detail));
+        } else {
+            scroll.setVisibility(View.VISIBLE);
+            table_layout.setVisibility(View.VISIBLE);
+            ll.setVisibility(View.GONE);
+            button.setText(getString(R.string.view_less_detail));
+        }
     }
+
+
 
     public void startLiveDataFromHome(View view) {
         Log.i(TAG, "MSM: User started live data");
@@ -394,6 +416,33 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     public void openTripsList(View view) {
         Log.i(TAG, "MSM: Opening trips list");
         startActivity(new Intent(this, TripListActivity.class));
+    }
+
+
+    public void viewLoggingDetails(View view) {
+        Log.i(TAG, "MSM: Opening detailed view");
+        ScrollView scroll;
+        Button button;
+        LinearLayout ll;
+        TableLayout table_layout;
+        scroll = (ScrollView) findViewById(R.id.data_scroll);
+        button = (Button) findViewById(R.id.view_detailed_logging);
+        ll = (LinearLayout) findViewById(R.id.data_layout_main);
+        table_layout = (TableLayout) findViewById(R.id.data_table);
+        if (scroll.getVisibility() == View.VISIBLE) {
+            scroll.setVisibility(View.GONE);
+            table_layout.setVisibility(View.GONE);
+            ll.setVisibility(View.VISIBLE);
+            button.setText(getString(R.string.view_more_detail));
+        } else {
+            scroll.setVisibility(View.VISIBLE);
+            table_layout.setVisibility(View.VISIBLE);
+            ll.setVisibility(View.GONE);
+            button.setText(getString(R.string.view_less_detail));
+        }
+
+
+
     }
 
     public void startBackgroundService(View view) {
@@ -677,6 +726,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         tr.addView(name);
         tr.addView(value);
         tl.addView(tr, params);
+        tv.setText(id + " ---- " + key + " --- " +val);
     }
 
     /**
