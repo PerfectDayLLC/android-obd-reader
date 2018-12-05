@@ -161,8 +161,16 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     private LinearLayout vv;
     @InjectView(R.id.data_table)
     private TableLayout tl;
-    @InjectView(R.id.dlm_tv1)
-    private TextView tv;
+
+
+    @InjectView(R.id.details_row_2_L)
+    private TextView tvl;
+    @InjectView(R.id.details_row_2_C)
+    private TextView tvc;
+    @InjectView(R.id.details_row_2_R)
+    private TextView tvr;
+
+
     @Inject
     private SensorManager sensorManager;
     @Inject
@@ -372,11 +380,11 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         //startService(new Intent(this, MSMBackgroundService.class));
         ScrollView scroll;
         Button button;
-        LinearLayout ll;
+        ScrollView ll;
         TableLayout table_layout;
         scroll = (ScrollView) findViewById(R.id.data_scroll);
         button = (Button) findViewById(R.id.view_detailed_logging);
-        ll = (LinearLayout) findViewById(R.id.data_layout_main);
+        ll = (ScrollView) findViewById(R.id.data_main);
         table_layout = (TableLayout) findViewById(R.id.data_table);
         if (scroll.getVisibility() == View.VISIBLE) {
             scroll.setVisibility(View.GONE);
@@ -423,11 +431,11 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         Log.i(TAG, "MSM: Opening detailed view");
         ScrollView scroll;
         Button button;
-        LinearLayout ll;
+        ScrollView ll;
         TableLayout table_layout;
         scroll = (ScrollView) findViewById(R.id.data_scroll);
         button = (Button) findViewById(R.id.view_detailed_logging);
-        ll = (LinearLayout) findViewById(R.id.data_layout_main);
+        ll = (ScrollView) findViewById(R.id.data_main);
         table_layout = (TableLayout) findViewById(R.id.data_table);
         if (scroll.getVisibility() == View.VISIBLE) {
             scroll.setVisibility(View.GONE);
@@ -726,7 +734,25 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         tr.addView(name);
         tr.addView(value);
         tl.addView(tr, params);
-        tv.setText(id + " ---- " + key + " --- " +val);
+        //tvl.setText("ID: "+id+" key: "+key + "val: "+val);
+        if ( id.equals(AvailableCommandNames.THROTTLE_POS.toString())) {
+            tvl.setText(val);
+        }
+        if(id.equals(AvailableCommandNames.INTAKE_MANIFOLD_PRESSURE.toString())) {
+            tvc.setText(val);
+        }
+
+        if (id.equals(AvailableCommandNames.ENGINE_COOLANT_TEMP.toString())) {
+            tvr.setText(val);
+        }
+//        if (id.equals(AvailableCommandNames.SPEED.toString())) {
+//            tvc.setText(val);
+//        } else if (id.equals(AvailableCommandNames.ENGINE_RPM.toString())) {
+//            tvl.setText(val);
+//        } else if (id.endsWith(AvailableCommandNames.ENGINE_RUNTIME.toString())) {
+//            tvr.setText(val);
+//        }
+
     }
 
     /**

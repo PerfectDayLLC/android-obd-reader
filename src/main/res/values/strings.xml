@@ -120,6 +120,15 @@
     <string name="text_consumption_label">FUEL</string>
     <string name="text_runtime_label">RUNTIME</string>
     <string name="text_rpm_label">RPM</string>
+    <string name="details_row_1_L">Throttle Pos</string>
+    <string name="details_row_1_C">Vacuum</string>
+    <string name="details_row_1_R">Coolant Temp</string>
+
+    <string name="details_row_2_L">Stuff</string>
+    <string name="details_row_2_C">And</string>
+    <string name="details_row_2_R">Things</string>
+
+
 
     <!--main config settings-->
     <!--<string name="upload_data_preference">true</string>-->
