@@ -624,17 +624,14 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
                 return build.create();
             case NO_ORIENTATION_SENSOR:
-                //Toast.makeText(service, getString(R.string.text_no_orientation_sensor), Toast.LENGTH_SHORT).show();
                 build.setMessage(getString(R.string.text_no_orientation_sensor));
-                return build.create();
+                return null;//return build.create();
             case NO_GPS_SUPPORT:
-                //Toast.makeText(service, getString(R.string.text_no_gps_support), Toast.LENGTH_SHORT).show();
                 build.setMessage(getString(R.string.text_no_gps_support));
                 return build.create();
             case SAVE_TRIP_NOT_AVAILABLE:
                 build.setMessage(getString(R.string.text_save_trip_not_available));
-                //Toast.makeText(service, getString(R.string.text_save_trip_not_available), Toast.LENGTH_SHORT).show();
-                return build.create();
+                return null;//return build.create();
         }
 
         return null;
