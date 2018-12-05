@@ -8,4 +8,7 @@
     <color name="accent">#3c8dbc</color>
     <!-- Red A200 -->
     <color name="white">#ffffff</color>
+    <color name="success">#00bb00</color>
+    <color name="error">#FF0000</color>
+    <color name="warning">#ffbb00</color>
 </resources>
