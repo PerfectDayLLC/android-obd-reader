@@ -27,8 +27,8 @@
     <string name="text_bluetooth" translatable="false">Bluetooth</string>
     <string name="text_orientation_default" translatable="false">N</string>
     <string name="text_zero" translatable="false">0</string>
-    <string name="text_consumption_default" translatable="false">0l/100km</string>
-    <string name="text_runtime_default" translatable="false">00:00:00</string>
+    <string name="text_consumption_default" translatable="false">--</string>
+    <string name="text_runtime_default" translatable="false">--:--:--</string>
     <string name="title_pref_obd">OBD Preferences</string>
     <string name="title_pref_commands">OBD Commands</string>
     <string name="title_pref_bluetooth" translatable="false">Bluetooth</string>
@@ -42,22 +42,22 @@
     <string name="text_save_trip_not_available">Sorry, trip will not be saved.</string>
     <string name="text_obd_command_failure">OBD command failure!</string>
     <string name="text_dtc_no_data">No DTC stored</string>
-    <string name="status_no_bluetooth_id">unavailable</string>
-    <string name="status_bluetooth_disabled">disabled</string>
+    <string name="status_no_bluetooth_id">Unavailable</string>
+    <string name="status_bluetooth_disabled">Disabled</string>
     <string name="status_bluetooth_ok">ready</string>
-    <string name="status_bluetooth_connecting">connecting&#8230;</string>
-    <string name="status_bluetooth_connected">connected</string>
-    <string name="status_bluetooth_error_connecting">connection failed</string>
-    <string name="status_gps_fix">fix acquired</string>
-    <string name="status_gps_no_fix">fix not acquired</string>
-    <string name="status_gps_started">started</string>
-    <string name="status_gps_stopped">stopped</string>
-    <string name="status_gps_ready">ready</string>
-    <string name="status_gps_no_support">not available</string>
-    <string name="status_gps_not_used">not used</string>
+    <string name="status_bluetooth_connecting">Connecting&#8230;</string>
+    <string name="status_bluetooth_connected">Connected</string>
+    <string name="status_bluetooth_error_connecting">Connection Failed</string>
+    <string name="status_gps_fix">Fix Acquired</string>
+    <string name="status_gps_no_fix">Fix Not Acquired</string>
+    <string name="status_gps_started">Started</string>
+    <string name="status_gps_stopped">Stopped</string>
+    <string name="status_gps_ready">Ready</string>
+    <string name="status_gps_no_support">Not Available</string>
+    <string name="status_gps_not_used">Not Used</string>
     <string name="status_obd_ready">OK</string>
-    <string name="status_obd_data">receiving data&#8230;</string>
-    <string name="status_obd_disconnected">disconnected</string>
+    <string name="status_obd_data">Receiving Data&#8230;</string>
+    <string name="status_obd_disconnected">Disconnected</string>
     <string name="status_obd_no_support">NA</string>
     <string name="pref_upload_title">Enable Data Upload</string>
     <string name="pref_upload_summaryOff">Enable http data upload</string>
@@ -115,6 +115,11 @@
     <string name="pref_vehicle_info_title">Vehicle Info</string>
     <string name="menu_start_logging">Start Logging</string>
     <string name="menu_stop_logging">Stop Logging</string>
+    <string name="view_more_detail">Show Detail</string>
+    <string name="view_less_detail">Hide Detail</string>
+    <string name="text_consumption_label">FUEL</string>
+    <string name="text_runtime_label">RUNTIME</string>
+    <string name="text_rpm_label">RPM</string>
 
     <!--main config settings-->
     <!--<string name="upload_data_preference">true</string>-->
