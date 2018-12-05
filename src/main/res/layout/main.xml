@@ -18,7 +18,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_weight="0.5"
+            android:background="@color/success"
+            android:textColor="@color/white"
             android:text="@string/menu_start_logging"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:onClick="startLiveDataFromHome"
             />
 
@@ -28,6 +32,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="@string/menu_stop_logging"
+            android:textColor="@color/white"
+            android:background="@color/error"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:onClick="stopLiveDataFromHome"
             />
     </LinearLayout>
@@ -36,7 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
 
         <Button
             android:id="@+id/home_settings_button"
@@ -45,6 +54,10 @@
             android:layout_alignParentTop="false"
             android:layout_weight="0.5"
             android:text="@string/action_settings"
+            android:textColor="@color/white"
+            android:background="@color/primary"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:onClick="openSettingsFromHome"
             />
 
@@ -54,6 +67,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="@string/menu_get_dtc"
+            android:textColor="@color/white"
+            android:background="@color/primary"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:onClick="getTroubleCodesFromHome"
             />
         <Button
@@ -62,6 +79,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="@string/menu_trips_list"
+            android:textColor="@color/white"
+            android:background="@color/primary"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:onClick="openTripsList"
             />
     </LinearLayout>
@@ -74,9 +95,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:layout_marginLeft="5dp"
             android:tag="SPEED"
             android:text="@string/text_zero"
-            android:textSize="@dimen/abc_text_size_display_3_material" />
+            android:textSize="@dimen/abc_text_size_display_2_material" />
 
         <TextView
             android:id="@+id/compass_text"
@@ -85,7 +107,10 @@
             android:layout_weight="1"
             android:gravity="end"
             android:text="@string/text_orientation_default"
-            android:textSize="@dimen/abc_text_size_display_3_material" />
+            android:layout_marginRight="5dp"
+            android:textSize="@dimen/abc_text_size_display_2_material" />
+    </TableRow>
+
     </TableRow>
 
     <TableRow
@@ -144,7 +169,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/text_gps"
-            android:textSize="@dimen/abc_text_size_medium_material" />
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:textColor="@color/primary"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
@@ -152,7 +179,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/text_bluetooth"
-            android:textSize="@dimen/abc_text_size_medium_material" />
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:textColor="@color/primary"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
@@ -160,7 +189,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/text_obd"
-            android:textSize="@dimen/abc_text_size_medium_material" />
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:textColor="@color/primary"
+            android:textStyle="bold" />
 
 
     </TableRow>
