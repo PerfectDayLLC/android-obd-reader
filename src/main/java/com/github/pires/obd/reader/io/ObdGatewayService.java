@@ -161,7 +161,7 @@ public class ObdGatewayService extends AbstractGatewayService {
     @Override
     public void queueJob(ObdCommandJob job) {
         // This is a good place to enforce the imperial units option
-        job.getCommand().useImperialUnits(prefs.getBoolean(ConfigActivity.IMPERIAL_UNITS_KEY, false));
+        job.getCommand().useImperialUnits(true);
 
         // Now we can pass it along
         super.queueJob(job);
