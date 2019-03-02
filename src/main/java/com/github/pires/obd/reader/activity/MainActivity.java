@@ -163,12 +163,24 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     private TableLayout tl;
 
 
-    @InjectView(R.id.details_row_2_L)
-    private TextView tvl;
-    @InjectView(R.id.details_row_2_C)
-    private TextView tvc;
-    @InjectView(R.id.details_row_2_R)
-    private TextView tvr;
+    @InjectView(R.id.details_row_2v_L)
+    private TextView tvl2;
+    @InjectView(R.id.details_row_2v_C)
+    private TextView tvc2;
+    @InjectView(R.id.details_row_2v_R)
+    private TextView tvr2;
+
+    @InjectView(R.id.details_row_3v_L)
+    private TextView tvl3;
+    @InjectView(R.id.details_row_3v_C)
+    private TextView tvc3;
+    @InjectView(R.id.details_row_3v_R)
+    private TextView tvr3;
+
+    @InjectView(R.id.details_row_top_value_L)
+    private TextView tvltop;
+    @InjectView(R.id.details_row_top_value_C)
+    private TextView tvctop;
 
 
     @Inject
@@ -736,15 +748,32 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         tl.addView(tr, params);
         //tvl.setText("ID: "+id+" key: "+key + "val: "+val);
         if ( id.equals(AvailableCommandNames.THROTTLE_POS.toString())) {
-            tvl.setText(val);
+            tvl2.setText(val);
         }
         if(id.equals(AvailableCommandNames.INTAKE_MANIFOLD_PRESSURE.toString())) {
-            tvc.setText(val);
+            tvc2.setText(val);
+        }
+
+        if (id.equals(AvailableCommandNames.TIME_TRAVELED_MIL_ON.toString())) {
+            tvr3.setText(val);
+        }
+        if ( id.equals(AvailableCommandNames.DISTANCE_TRAVELED_MIL_ON.toString())) {
+            tvl3.setText(val);
+        }
+        if(id.equals(AvailableCommandNames.FUEL_TYPE.toString())) {
+            tvc3.setText(val);
         }
 
         if (id.equals(AvailableCommandNames.ENGINE_COOLANT_TEMP.toString())) {
-            tvr.setText(val);
+            tvr2.setText(val);
         }
+        if ( id.equals(AvailableCommandNames.TROUBLE_CODES.toString())) {
+            tvltop.setText(val);
+        }
+        if(id.equals(AvailableCommandNames.VIN.toString())) {
+            tvctop.setText(val);
+        }
+
 //        if (id.equals(AvailableCommandNames.SPEED.toString())) {
 //            tvc.setText(val);
 //        } else if (id.equals(AvailableCommandNames.ENGINE_RPM.toString())) {

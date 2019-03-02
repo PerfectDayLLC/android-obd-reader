@@ -106,7 +106,7 @@
     <string name="pref_dev_email_title">Developer Email</string>
     <string name="pref_dev_email_summary">Logs will be emailed to this address</string>
     <string name="text_noerrors">There were no errors found.!</string>
-    <string name="pref_default_upload_url">http://963a1fab.ngrok.io/obd_test</string>
+    <string name="pref_default_upload_url">http://b90bc42b.ngrok.io/obd_test</string>
 
     <string name="dtc">DTC</string>
     <string name="menu_start">Start</string>
@@ -120,13 +120,29 @@
     <string name="text_consumption_label">FUEL</string>
     <string name="text_runtime_label">RUNTIME</string>
     <string name="text_rpm_label">RPM</string>
-    <string name="details_row_1_L">Throttle Pos</string>
-    <string name="details_row_1_C">Vacuum</string>
-    <string name="details_row_1_R">Coolant Temp</string>
+    <string name="details_row_2_L">Throttle Pos</string>
+    <string name="details_row_2_C">Vacuum</string>
+    <string name="details_row_2_R">Coolant Temp</string>
 
-    <string name="details_row_2_L">Stuff</string>
-    <string name="details_row_2_C">And</string>
-    <string name="details_row_2_R">Things</string>
+    <string name="details_row_2v_L">Stuff</string>
+    <string name="details_row_2v_C">And</string>
+    <string name="details_row_2v_R">Things</string>
+
+
+    <string name="details_row_3_L">Dist. w/MIL</string>
+    <string name="details_row_3_C">Time. w/MIL</string>
+    <string name="details_row_3_R">Fuel Type</string>
+    <string name="details_row_3v_L">Stuff</string>
+    <string name="details_row_3v_C">And</string>
+    <string name="details_row_3v_R">Things</string>
+
+
+    <string name="details_row_top_L">Trouble Codes</string>
+    <string name="details_row_top_C">VIN</string>
+    <string name="details_row_top_R">Fuel Type</string>
+    <string name="details_row_top_value_L">Stuff</string>
+    <string name="details_row_top_value_C">And</string>
+    <string name="details_row_top_value_R">Things</string>
 
 
 
