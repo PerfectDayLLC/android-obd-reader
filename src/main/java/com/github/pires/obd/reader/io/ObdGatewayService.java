@@ -162,7 +162,7 @@ public class ObdGatewayService extends AbstractGatewayService {
     public void queueJob(ObdCommandJob job) {
         // This is a good place to enforce the imperial units option
         job.getCommand().useImperialUnits(true);
-
+        Log.d(TAG, "MSM: what");
         // Now we can pass it along
         super.queueJob(job);
     }

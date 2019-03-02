@@ -119,7 +119,6 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
     /// the trip log
     private TripLog triplog;
     private TripRecord currentTrip;
-
     @InjectView(R.id.compass_text)
     private TextView compass;
     private final SensorEventListener orientListener = new SensorEventListener() {
@@ -791,6 +790,7 @@ public class MainActivity extends RoboActivity implements ObdProgressListener, L
         if (isServiceBound) {
             for (ObdCommand Command : ObdConfig.getCommands()) {
                 if (prefs.getBoolean(Command.getName(), true))
+                    Log.d(TAG, "Queueing jobs´..");
                     service.queueJob(new ObdCommandJob(Command));
             }
         }
